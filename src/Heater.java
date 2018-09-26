@@ -13,18 +13,21 @@
 public class Heater {
 
     // Variables used in this class
-    protected long hUID;
-    protected static int hCount = 0;
-    protected boolean state = false;
+    private static long UIDSource = 20000;
+    
+    private long hUID; 
+    private boolean state = false;
     String status;
+    
 
     /**
      * Constructor for a heater Increases count of heaters and creates a unique
      * ID for a new heater
      */
-    public Heater() {
-        this.hUID = 20000 + hCount;
-        hCount++;
+    public Heater(Logger logger) {
+        this.hUID = UIDSource++;
+        this.state = false;
+        this.status = "OFF";
     }
 
     /**
@@ -43,6 +46,7 @@ public class Heater {
      * @param state
      */
     public void setState(boolean state) {
+        
         if (state == true) {
             this.status = "ON";
             this.state = true;

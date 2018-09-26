@@ -13,21 +13,28 @@
 public class Controller {
 
     //Variables used in this class
-    public Heater heater;
-    public TempSensor ts;
+    private Heater heater;
+    private TempSensor ts;
 
     /**
-     * Controller constructor Left commented as this program uses the default
-     * constructor
+     * Controller constructor
      */
-    /*         public Controller(){
-   *        
-   *         }
+    public Controller(Logger logger) {
+    }
+
+    /**
+     * Provide the string “Controller with TS:{UID} = {temperature} and
+     * Heater:{UID} = {state}”
+     * @return formatted string
      */
+    @Override
+    public String toString() {
+        return ("Controller with TS:" + ts.getUID() + " = " + this.ts.tsTemp + " and Heater:" + heater.getUID() + " = " + this.heater.status);
+    }
+
     /**
      * connects a temp sensor only one temp sensor at a time overrides with
      * newest sensor
-     *
      * @param ts
      */
     public void connect(TempSensor ts) {
@@ -37,11 +44,11 @@ public class Controller {
     /**
      * connects a heater only one heater at a time overrides with most most
      * recent connect request
-     *
      * @param heater
      */
     public void connect(Heater heater) {
         this.heater = heater;
+        this.heater.setState(false);
     }
 
     /**
@@ -63,17 +70,6 @@ public class Controller {
         } else {
             //do nothing
         }
-    }
-
-    /**
-     * Provide the string “Controller with TS:{UID} = {temperature} and
-     * Heater:{UID} = {state}”
-     *
-     * @return formatted string
-     */
-    @Override
-    public String toString() {
-        return ("Controller with TS:" + ts.getUID() + " = " + this.ts.tsTemp + " and Heater:" + heater.getUID() + " = " + this.heater.status);
     }
 
 }

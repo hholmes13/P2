@@ -13,13 +13,13 @@
 public class Room {
 
     //Variables used in this class
-    protected int temp;
     public Heater heater;
-    public TempSensor ts;
-    protected double tNew;
-    protected double tOld;
-    protected static int loopCount = 0;
-    double[] tempDisturbance;
+    public TempSensor tempSensor;
+    
+    private double[]           disturbance;
+    private double             roomTemp;
+    private int                dIndex;
+    private final static int   HOT_AIR  =  95;
 
     /**
      * Room constructor
@@ -27,9 +27,10 @@ public class Room {
      * @param tempDisturbance
      * @param intialTemp
      */
-    public Room(double[] tempDisturbance, double intialTemp) {
-        this.tOld = intialTemp;
-        this.tempDisturbance = tempDisturbance;
+    public Room(double[] tempDisturbance, double initialTemp) {
+        disturbance = tempDisturbance;
+        dIndex      = 0;
+        roomTemp    = initialTemp;
     }
 
     /**
@@ -37,8 +38,7 @@ public class Room {
      * @return
      */
     public double getTemp() {
-
-        return this.temp;
+        return roomTemp;
     }
 
     /**
@@ -47,7 +47,7 @@ public class Room {
      * @param ts
      */
     public void add(TempSensor ts) {
-        this.ts = ts;
+        tempSensor = ts;
     }
 
     /**
@@ -56,7 +56,7 @@ public class Room {
      * @param htr
      */
     public void add(Heater htr) {
-        this.heater = htr;
+        heater = htr;
     }
 
     /**
@@ -65,9 +65,9 @@ public class Room {
      */
     public void preClock() {
         if (this.heater.getState() == true) {
-            tNew = (0.33333) * (tOld + this.tempDisturbance[loopCount] + 95);
+            roomTemp = (1.0/3) * (roomTemp + this.disturbance[dIndex] + 95.0);
         } else {
-            tNew = (0.5) * (tOld + this.tempDisturbance[loopCount]);
+            roomTemp = (1./2) * (roomTemp + this.disturbance[dIndex]);
         }
     }
 
@@ -80,9 +80,11 @@ public class Room {
      *
      */
     public void clock() {
-        this.ts.setTemp(tNew);
-        loopCount++;
-        tOld = tNew;
-    }
+        dIndex++;
+        if (dIndex >= disturbance.length) {
+            dIndex = 0;
+        }
+    
+  }
 
 }

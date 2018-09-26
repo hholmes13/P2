@@ -13,23 +13,23 @@
 public class TempSensor {
     //variables needed for this class
 
-    protected static int tsCount = 0;
-    protected long tsUID;
-    double tsTemp = Double.NaN;
+    private static long UIDSource = 10000;
+    
+    private long tsUID;
+    double tsTemp;
 
     /**
      * Constructor for TempSensor object Creates a TempSensor Creates a valid
      * UID and increases the count of TempSensors
      */
-    public TempSensor() {
-        this.tsUID = 10000 + tsCount;
-        tsCount++;
+    public TempSensor(Logger logger) {
+        tsUID = UIDSource++;
+        tsTemp = Double.NaN;
 
     }
 
     /**
      * Get the UID for the sensor
-     *
      * @return sensor UID
      */
     public long getUID() {
@@ -39,7 +39,6 @@ public class TempSensor {
 
     /**
      * get temperature from Temp Sensor
-     *
      * @return Temp. in degrees F
      */
     public double getTemp() {
@@ -49,7 +48,6 @@ public class TempSensor {
 
     /**
      * Set the temp of the sensor
-     *
      * @param temperature
      */
     public void setTemp(double temperature) {
@@ -58,7 +56,6 @@ public class TempSensor {
 
     /**
      * returns the string “TS:{UID} = {temperature}”
-     *
      * @return formatted string
      */
     @Override
