@@ -10,7 +10,7 @@
  *
  * @author Hunter Holmes hholmes1@uab.edu
  */
-public class Controller {
+public class Controller implements Clockable {
 
     //Variables used in this class
     private Heater heater;

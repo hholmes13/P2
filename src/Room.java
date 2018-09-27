@@ -10,7 +10,7 @@
  *
  * @author Hunter Holmes hholmes1@uab.edu
  */
-public class Room {
+public class Room implements Clockable {
 
     //Variables used in this class
     public Heater heater;
