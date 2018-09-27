@@ -27,6 +27,8 @@ public class Clock {
     }
 
     /**
+     * Add clockable object to the ordered collection of objects that will be
+     * when run is called
      * @param object
      */
     public void add(Clockable object) {
