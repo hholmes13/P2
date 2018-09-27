@@ -22,10 +22,9 @@ public class Room implements Clockable {
     private final static int   HOT_AIR  =  95;
 
     /**
-     * Room constructor
-     *
+     * Room Constructor
      * @param tempDisturbance
-     * @param intialTemp
+     * @param initialTemp
      */
     public Room(double[] tempDisturbance, double initialTemp) {
         disturbance = tempDisturbance;

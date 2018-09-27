@@ -18,8 +18,10 @@ public class Controller implements Clockable {
 
     /**
      * Controller constructor
+     * @param logger
      */
     public Controller(Logger logger) {
+        
     }
 
     /**

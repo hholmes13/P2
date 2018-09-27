@@ -9,7 +9,7 @@
  * Model a room with temperature being controlled with the use of a heater
  * @author Hunter Holmes hholmes1@uab.edu
  */
-public class PrintLogger {
+public class PrintLogger extends Logger{
     
     /**
      * Create a PrintLogger with specified threshold

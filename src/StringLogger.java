@@ -8,7 +8,8 @@
  *
  * @author hholmes
  */
-public class StringLogger {
+public class StringLogger extends Logger {
+    
     
     /**
      * Create a StringLogger with specific threshold
@@ -23,7 +24,8 @@ public class StringLogger {
      * @return an ArrayList of strings is returned
      */
     public ArrayList<String> getLog(){
-        
+     
+        return ArrayList;
     }
     
     /**
@@ -32,6 +34,7 @@ public class StringLogger {
      * @param level value noting the type of the information
      * @param logEntry text to be part of the accumulated string log
      */
+    @Override
     public void log(int level, String logEntry){
         
     }
