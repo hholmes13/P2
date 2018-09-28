@@ -34,7 +34,8 @@ public class PrintLogger extends Logger{
      * @param level value noting the type of the information
      * @param logEntry text to be part of the printed log
      */
+    @Override
     public void log(int level, String logEntry){
-        
+        System.out.append("");
     }
 }

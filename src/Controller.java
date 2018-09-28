@@ -56,6 +56,7 @@ public class Controller implements Clockable {
     /**
      * Actions before the clock None in first version (P1)
      */
+    @Override
     public void preClock() {
 
     }
@@ -64,6 +65,7 @@ public class Controller implements Clockable {
      * Check current sensor temp and decide to turn on, turn off, or do nothing
      * turn on when below 68.0 turn off when above 71.0 maintain state otherwise
      */
+    @Override
     public void clock() {
         if (this.ts.getTemp() < 68.0) {
             this.heater.setState(true);

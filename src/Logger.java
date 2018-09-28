@@ -11,6 +11,13 @@
  */
 public abstract class Logger {
 
+    public int DEBUG = 0;
+    public int INFO = 10;
+    public int TIMESTAMP = 20;
+    public int WARNING = 50;
+    public int ERROR = 100;
+    public int ALWAYS = 100000;
+    
     /**
      * Set a new log threshold for actual logging
      * @param newThreshold level that must be met or exceeded for actual logging
