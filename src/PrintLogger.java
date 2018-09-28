@@ -12,6 +12,14 @@
 public class PrintLogger extends Logger{
     
     /**
+     * 
+     */
+    public PrintLogger(){
+        
+    }
+    
+    
+    /**
      * Create a PrintLogger with specified threshold
      * @param threshold level that has to be met or exceeded for logging to occur
      */
