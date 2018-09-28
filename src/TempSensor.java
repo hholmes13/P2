@@ -56,7 +56,7 @@ public class TempSensor {
      */
     public void setTemp(double temperature) {
         this.tsTemp = temperature;
-        this.logger.log(10, "Temperature Sensor Temp is: " + this.tsTemp + " degrees F");
+        this.logger.log(10, "Temperature Sensor Temp is: " + (int) this.tsTemp + " degrees F");
 
     }
 

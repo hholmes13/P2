@@ -75,9 +75,9 @@ public class Controller implements Clockable {
      */
     @Override
     public void clock() {
-        if (this.ts.getTemp() < 68.0) {
+        if ((this.ts.getTemp() < 68.0) && (this.heater.getState() == false)) {
             this.heater.setState(true);
-        } else if (this.ts.getTemp() > 71.0) {
+        } else if ((this.ts.getTemp() > 71.0) && (this.heater.getState() == true)) {
             this.heater.setState(false);
         } else {
             //do nothing

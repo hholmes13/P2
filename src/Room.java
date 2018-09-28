@@ -85,4 +85,13 @@ public class Room implements Clockable {
 
     }
 
+    /**
+     * Provide a string for Room which will be stable for unit tests
+     * @return
+     */
+    @Override
+    public String toString() {
+        return "Room";
+    }
+
 }
