@@ -1,8 +1,9 @@
 /*
  * File: TempSensor.java
  * Author: Hunter Holmes hholmes1@uab.edu
- * Assignment:  P1
+ * Assignment:  P2
  * Vers: 1.0.0 09/17/2018 hah - initial coding
+ * Vers: 2.0.0 09/26/2018 hah - modifications and additions for P2, added loggers and clock
  */
 
 /**
@@ -14,10 +15,10 @@ public class TempSensor {
     //variables needed for this class
 
     private static long UIDSource = 10000;
-    
+
     private long tsUID;
     public double tsTemp;
-    
+
     public Logger logger;
 
     /**
@@ -55,8 +56,8 @@ public class TempSensor {
      */
     public void setTemp(double temperature) {
         this.tsTemp = temperature;
-        this.logger.log(10,"Temperature Sensor Temp is: " + this.tsTemp + " degrees F");
-        
+        this.logger.log(10, "Temperature Sensor Temp is: " + this.tsTemp + " degrees F");
+
     }
 
     /**

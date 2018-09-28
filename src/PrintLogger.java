@@ -1,8 +1,9 @@
 /*
   * File: PrintLogger.java
   * Author: Hunter Holmes hholmes1@uab.edu
-  * Assignment:  P1
+  * Assignment:  P2
   * Vers: 1.0.0 09/17/2018 hah - initial coding
+  * Vers: 2.0.0 09/26/2018 hah - modifications and additions for P2, added loggers and clock
  */
 
 /**
@@ -12,7 +13,7 @@
 public class PrintLogger extends Logger {
 
     private int printThreshold;
-    
+
     public Logger sLogger;
 
     /**
@@ -20,7 +21,7 @@ public class PrintLogger extends Logger {
      */
     public PrintLogger() {
         printThreshold = 0;
-        sLogger  = new StringLogger(0);
+        sLogger = new StringLogger(0);
     }
 
     /**
@@ -30,7 +31,7 @@ public class PrintLogger extends Logger {
      */
     public PrintLogger(int threshold) {
         printThreshold = threshold;
-        sLogger  = new StringLogger(printThreshold);
+        sLogger = new StringLogger(printThreshold);
     }
 
     /**

@@ -1,8 +1,9 @@
 /*
  * File: Room.java
  * Author: Hunter Holmes hholmes1@uab.edu
- * Assignment:  P1
+ * Assignment:  P2
  * Vers: 1.0.0 09/17/2018 hah - initial coding
+ * Vers: 2.0.0 09/26/2018 hah - modifications and additions for P2, added loggers and clock
  */
 
 /**

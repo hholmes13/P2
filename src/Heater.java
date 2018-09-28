@@ -1,8 +1,9 @@
 /*
  * File: Heater.java
  * Author: Hunter Holmes hholmes1@uab.edu
- * Assignment:  P1
+ * Assignment:  P2
  * Vers: 1.0.0 09/17/2018 hah - initial coding
+ * Vers: 2.0.0 09/26/2018 hah - modifications and additions for P2, added loggers and clock
  */
 
 /**
@@ -18,7 +19,7 @@ public class Heater {
     private long hUID;
     private boolean state = false;
     public String status;
-    
+
     public Logger logger;
 
     /**
@@ -52,12 +53,12 @@ public class Heater {
         if (state == true) {
             this.status = "ON";
             this.state = true;
-            this.logger.log(10,"Heater is ON");
+            this.logger.log(10, "Heater is ON");
 
         } else {
             this.status = "OFF";
             this.state = false;
-            this.logger.log(10,"Heater is OFF");
+            this.logger.log(10, "Heater is OFF");
         }
     }
 
@@ -74,7 +75,6 @@ public class Heater {
     /**
      * converts true/false to ON/OFF for ease of displaying status returns the
      * string “Heater:{UID} = {status}”
-     *
      * @return formatted string
      */
     @Override

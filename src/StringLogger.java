@@ -1,14 +1,16 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+  * File: StringLogger.java
+  * Author: Hunter Holmes hholmes1@uab.edu
+  * Assignment:  P2
+  * Vers: 1.0.0 09/17/2018 hah - initial coding
+  * Vers: 2.0.0 09/26/2018 hah - modifications and additions for P2, added loggers and clock
  */
 
 import java.util.ArrayList;
 
 /**
- *
- * @author hholmes
+ * Model a room with temperature being controlled with the use of a heater
+ * @author Hunter Holmes hholmes1@uab.edu
  */
 public class StringLogger extends Logger {
 

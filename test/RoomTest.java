@@ -14,11 +14,17 @@ import static org.junit.Assert.*;
  */
 public class RoomTest {
     
+    private Room room1;
+    private Room room2;
+    private TempSensor ts1;
+    private TempSensor ts2;
+    
     public RoomTest() {
     }
     
     @Before
     public void setUp() {
+        
     }
 
     /**
