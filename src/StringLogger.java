@@ -12,13 +12,25 @@ import java.util.ArrayList;
  */
 public class StringLogger extends Logger {
 
+    int stringThreshold;
+    ArrayList stringLog;
+    int logCount;
+
+    /**
+     *
+     */
+    public StringLogger() {
+        stringThreshold = 0;
+        logCount = 0;
+    }
+
     /**
      * Create a StringLogger with specific threshold
      * @param threshold level that has to be met or exceeded for logging to
      * occur
      */
     public StringLogger(int threshold) {
-
+        stringThreshold = threshold;
     }
 
     /**
@@ -26,15 +38,8 @@ public class StringLogger extends Logger {
      * @return an ArrayList of strings is returned
      */
     public ArrayList<String> getLog() {
-        ArrayList<String> list = new ArrayList<String>() {
-            {
-                add("A");
-                add("B");
-                add("C");
-            }
-        };
 
-        return list;
+        return stringLog;
     }
 
     /**
@@ -45,14 +50,18 @@ public class StringLogger extends Logger {
      */
     @Override
     public void log(int level, String logEntry) {
-
+        if (level <= this.stringThreshold) {
+            stringLog.add(logCount, logEntry);
+        } else {
+            //nothing yet
+        }
     }
 
     /**
      * Clear the accumulated log strings
      */
     public void clear() {
-
+        stringLog.clear();
     }
 
 }

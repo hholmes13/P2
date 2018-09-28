@@ -60,10 +60,10 @@ public class Room implements Clockable {
      */
     @Override
     public void preClock() {
-        if ( heater.getState() ) {
-            roomTemp = (roomTemp + disturbance[dIndex] + HOT_AIR ) / 3.;
+        if (heater.getState()) {
+            roomTemp = (roomTemp + disturbance[dIndex] + HOT_AIR) / 3.;
         } else {
-            roomTemp = (roomTemp + disturbance[dIndex]           ) / 2.;
+            roomTemp = (roomTemp + disturbance[dIndex]) / 2.;
         }
         tempSensor.setTemp(roomTemp);
     }

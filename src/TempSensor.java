@@ -16,7 +16,9 @@ public class TempSensor {
     private static long UIDSource = 10000;
     
     private long tsUID;
-    double tsTemp;
+    public double tsTemp;
+    
+    public Logger logger;
 
     /**
      * Constructor for TempSensor object Creates a TempSensor Creates a valid
@@ -25,6 +27,7 @@ public class TempSensor {
     public TempSensor(Logger logger) {
         tsUID = UIDSource++;
         tsTemp = Double.NaN;
+        this.logger = logger;
 
     }
 
@@ -52,6 +55,8 @@ public class TempSensor {
      */
     public void setTemp(double temperature) {
         this.tsTemp = temperature;
+        this.logger.log(10,"Temperature Sensor Temp is: " + this.tsTemp + " degrees F");
+        
     }
 
     /**

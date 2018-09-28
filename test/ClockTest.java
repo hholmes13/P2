@@ -14,27 +14,27 @@ import static org.junit.Assert.*;
  * @author David Green DGreen@uab.edu
  */
 class Item implements Clockable {
-    
+
     private int preClockCount = 0;
     private int clockCount = 0;
-    
+
     @Override
     public void preClock() {
         preClockCount++;
     }
-    
+
     /**
      * If clock is not exactly 1 behind preClock then mess things up
      */
     @Override
     public void clock() {
-        if ( preClockCount == clockCount+1 ) {
+        if (preClockCount == clockCount + 1) {
             clockCount++;
         } else {
             clockCount = -999999999;
         }
     }
-    
+
     /**
      * Get the number of preClock events
      * @return number of preClock events
@@ -42,7 +42,7 @@ class Item implements Clockable {
     public int getPreClockCount() {
         return preClockCount;
     }
-    
+
     /**
      * Get the number of clock events (or a weird number if things failed)
      * @return number of clock events
@@ -50,16 +50,15 @@ class Item implements Clockable {
     public int getClockCount() {
         return clockCount;
     }
-    
-}
 
+}
 
 /**
  * Test Clock
  * @author David G. Green DGreen@uab.edu
  */
 public class ClockTest {
-    
+
     private Item i1;
     private Item i2;
     private Item i3;
@@ -73,10 +72,10 @@ public class ClockTest {
         i1 = new Item();
         i2 = new Item();
         i3 = new Item();
-        c  = new Clock();
+        c = new Clock();
         c.add(i1);
         c.add(i2);
-        
+
         // note i3 not clocked
     }
 
@@ -104,8 +103,8 @@ public class ClockTest {
         assertEquals(100, i1.getClockCount());
         assertEquals(100, i2.getPreClockCount());
         assertEquals(100, i2.getClockCount());
-        assertEquals(  0, i3.getPreClockCount());
-        assertEquals(  0, i3.getClockCount());
+        assertEquals(0, i3.getPreClockCount());
+        assertEquals(0, i3.getClockCount());
     }
 
 }

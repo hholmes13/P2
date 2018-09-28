@@ -17,19 +17,20 @@ public abstract class Logger {
     public int WARNING = 50;
     public int ERROR = 100;
     public int ALWAYS = 100000;
-    
+
     /**
      * Set a new log threshold for actual logging
      * @param newThreshold level that must be met or exceeded for actual logging
      * when the logger is asked to do something
      */
-    public void setLogThreshold(int newThreshold){
-        
+    public void setLogThreshold(int newThreshold) {
+
     }
-    
+
     /**
      * Log a message if 'level' is greater than or equal to logger's threshold.
-     * The actual logging routine will add a newline to the logEntry if appropriate.
+     * The actual logging routine will add a newline to the logEntry if
+     * appropriate.
      * @param level message's level
      * @param logEntry text to log (a newline will be added if appropriate)
      */

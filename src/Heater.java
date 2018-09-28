@@ -14,11 +14,12 @@ public class Heater {
 
     // Variables used in this class
     private static long UIDSource = 20000;
-    
-    private long hUID; 
+
+    private long hUID;
     private boolean state = false;
-    String status;
+    public String status;
     
+    public Logger logger;
 
     /**
      * Constructor for a heater Increases count of heaters and creates a unique
@@ -28,6 +29,7 @@ public class Heater {
         this.hUID = UIDSource++;
         this.state = false;
         this.status = "OFF";
+        this.logger = logger;
     }
 
     /**
@@ -46,13 +48,16 @@ public class Heater {
      * @param state
      */
     public void setState(boolean state) {
-        
+
         if (state == true) {
             this.status = "ON";
             this.state = true;
+            this.logger.log(10,"Heater is ON");
+
         } else {
             this.status = "OFF";
             this.state = false;
+            this.logger.log(10,"Heater is OFF");
         }
     }
 

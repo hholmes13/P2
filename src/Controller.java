@@ -15,13 +15,17 @@ public class Controller implements Clockable {
     //Variables used in this class
     private Heater heater;
     private TempSensor ts;
+    private Logger logger;
+    
+    private int secondCount;
 
     /**
      * Controller constructor
      * @param logger
      */
     public Controller(Logger logger) {
-        
+        this.logger = logger;
+        secondCount = 0;
     }
 
     /**
@@ -41,6 +45,7 @@ public class Controller implements Clockable {
      */
     public void connect(TempSensor ts) {
         this.ts = ts;
+        this.logger.log(10, "\nController Connected to " + ts.toString());
     }
 
     /**
@@ -51,6 +56,7 @@ public class Controller implements Clockable {
     public void connect(Heater heater) {
         this.heater = heater;
         this.heater.setState(false);
+        this.logger.log(10, "Controller Connected to " + heater.toString());
     }
 
     /**
@@ -58,7 +64,8 @@ public class Controller implements Clockable {
      */
     @Override
     public void preClock() {
-
+        this.secondCount++;
+        this.logger.log(20, "\n" + secondCount + " Sec.");
     }
 
     /**

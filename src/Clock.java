@@ -11,8 +11,8 @@
  */
 public class Clock {
 
-    Clockable[] clockables;
-    public int clockableCount;
+    private Clockable[] clockables;
+    private int clockableCount;
     private Logger logger;
 
     /**
