@@ -7,7 +7,8 @@
  */
 
 /**
- * Model a room with temperature being controlled with the use of a heater
+ * Model a controller that makes logical heating decisions based on readings from
+ * temperature sensor
  *
  * @author Hunter Holmes hholmes1@uab.edu
  */

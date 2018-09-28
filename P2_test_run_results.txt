@@ -1,0 +1,125 @@
+This test was run with a threshold of 20 to show the PrintLogging aspects included in the program.
+All tests written by Prof. Green have been passed.
+When the temp rises above or below the specified setpoints the heater's state is switched appropriately and it is stated by the PrintLogger. 
+Test P2 relies on the Clock class to pre-clock and clock the clockable objects. The fact that the clockable objects move forward in time together indicates that the clock is
+running properly as well as the clockable objects. 
+
+run:
+P2 Test program by David Green dgreen@uab.edu
+Testing P2 by Hunter Holmes hholmes1@uab.edu 
+
+Controller Connected to TS:10000 = NaN
+Heater is switched OFF
+Controller Connected to Heater:20000 = OFF
+Heater is switched OFF
+
+1 Sec.
+Temperature Sensor Temp is: 67 degrees F
+Heater is switched ON
+Passes: room State 0
+Passes: room Temp 0
+
+2 Sec.
+Temperature Sensor Temp is: 75 degrees F
+Heater is switched OFF
+Passes: room State 1
+Passes: room Temp 1
+
+3 Sec.
+Temperature Sensor Temp is: 70 degrees F
+Passes: room State 2
+Passes: room Temp 2
+
+4 Sec.
+Temperature Sensor Temp is: 67 degrees F
+Heater is switched ON
+Passes: room State 3
+Passes: room Temp 3
+
+5 Sec.
+Temperature Sensor Temp is: 75 degrees F
+Heater is switched OFF
+Passes: room State 4
+Passes: room Temp 4
+
+6 Sec.
+Temperature Sensor Temp is: 70 degrees F
+Passes: room State 5
+Passes: room Temp 5
+
+7 Sec.
+Temperature Sensor Temp is: 67 degrees F
+Heater is switched ON
+Passes: room State 6
+Passes: room Temp 6
+
+8 Sec.
+Temperature Sensor Temp is: 75 degrees F
+Heater is switched OFF
+Passes: room State 7
+Passes: room Temp 7
+
+9 Sec.
+Temperature Sensor Temp is: 70 degrees F
+Passes: room State 8
+Passes: room Temp 8
+
+10 Sec.
+Temperature Sensor Temp is: 67 degrees F
+Heater is switched ON
+Passes: room State 9
+Passes: room Temp 9
+
+11 Sec.
+Temperature Sensor Temp is: 75 degrees F
+Heater is switched OFF
+Passes: room State 10
+Passes: room Temp 10
+
+12 Sec.
+Temperature Sensor Temp is: 70 degrees F
+Passes: room State 11
+Passes: room Temp 11
+
+13 Sec.
+Temperature Sensor Temp is: 67 degrees F
+Heater is switched ON
+Passes: room State 12
+Passes: room Temp 12
+
+14 Sec.
+Temperature Sensor Temp is: 75 degrees F
+Heater is switched OFF
+Passes: room State 13
+Passes: room Temp 13
+
+15 Sec.
+Temperature Sensor Temp is: 74 degrees F
+Passes: room State 14
+Passes: room Temp 14
+
+16 Sec.
+Temperature Sensor Temp is: 73 degrees F
+Passes: room State 15
+Passes: room Temp 15
+
+17 Sec.
+Temperature Sensor Temp is: 73 degrees F
+Passes: room State 16
+Passes: room Temp 16
+
+18 Sec.
+Temperature Sensor Temp is: 73 degrees F
+Passes: room State 17
+Passes: room Temp 17
+
+19 Sec.
+Temperature Sensor Temp is: 73 degrees F
+Passes: room State 18
+Passes: room Temp 18
+
+20 Sec.
+Temperature Sensor Temp is: 69 degrees F
+Passes: room State 19
+Passes: room Temp 19
+BUILD SUCCESSFUL (total time: 0 seconds)

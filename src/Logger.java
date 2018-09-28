@@ -7,7 +7,7 @@
  */
 
 /**
- * Model a room with temperature being controlled with the use of a heater
+ * Define abstract logger class
  * @author Hunter Holmes hholmes1@uab.edu
  */
 public abstract class Logger {

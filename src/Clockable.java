@@ -5,7 +5,8 @@
  */
 
 /**
- *
+ * Interface that contracts properties of clockable items so that they
+ * may be clocked and pre-clocked
  * @author hholmes
  */
 public interface Clockable {

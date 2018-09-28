@@ -7,7 +7,7 @@
  */
 
 /**
- * Model a room with temperature being controlled with the use of a heater
+ * Use clock to send clock to pulse to clockable objects
  * @author Hunter Holmes hholmes1@uab.edu
  */
 public class Clock {

@@ -7,7 +7,7 @@
  */
 
 /**
- * Models a Temperature Sensor that sends it reading to a heater controller
+ * Models a Temperature Sensor that sends its reading to a heater controller
  *
  * @author Hunter Holmes hholmes1@uab.edu
  */
@@ -15,7 +15,6 @@ public class TempSensor {
     //variables needed for this class
 
     private static long UIDSource = 10000;
-
     private long tsUID;
     public double tsTemp;
 
@@ -56,8 +55,12 @@ public class TempSensor {
      */
     public void setTemp(double temperature) {
         this.tsTemp = temperature;
-        this.logger.log(10, "Temperature Sensor Temp is: " + (int) this.tsTemp + " degrees F");
-
+        
+        if(this.logger != null){
+            this.logger.log(10, "Temperature Sensor Temp is: " + (int)this.tsTemp + " degrees F");
+        }else{
+            
+        }
     }
 
     /**

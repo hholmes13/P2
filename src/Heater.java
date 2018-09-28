@@ -7,7 +7,7 @@
  */
 
 /**
- * Model a room with temperature being controlled with the use of a heater
+ * Model a heater whose state is changed by a controller
  *
  * @author Hunter Holmes hholmes1@uab.edu
  */
@@ -53,12 +53,18 @@ public class Heater {
         if (state == true) {
             this.status = "ON";
             this.state = true;
-            this.logger.log(10, "Heater is switched ON");
-
+            
+            if(this.logger != null){
+                this.logger.log(10, "Heater is switched ON"); 
+            }
+            
         } else {
             this.status = "OFF";
             this.state = false;
-            this.logger.log(10, "Heater is switched OFF");
+            
+            if(this.logger != null){
+                this.logger.log(10, "Heater is switched OFF");
+            }
         }
     }
 

@@ -9,7 +9,7 @@
 import java.util.ArrayList;
 
 /**
- * Model a room with temperature being controlled with the use of a heater
+ * StringLogger stores log messages in ArrayList of strings
  * @author Hunter Holmes hholmes1@uab.edu
  */
 public class StringLogger extends Logger {
@@ -19,7 +19,7 @@ public class StringLogger extends Logger {
     int logCount;
 
     /**
-     *
+     * Constructor for StringLogger
      */
     public StringLogger() {
         stringThreshold = 0;
