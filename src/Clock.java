@@ -6,76 +6,78 @@
   * Vers: 2.0.0 09/26/2018 hah - modifications and additions for P2, added loggers and clock
  */
 
+import java.util.ArrayList;
+
 /**
  * Use clock to send clock to pulse to clockable objects
  * @author Hunter Holmes hholmes1@uab.edu
  */
 public class Clock {
 
-    private Clockable[] clockables;
-    private int clockableCount;
-    private Logger logger;
-
+    
+    private ArrayList<Clockable> clockableObjects;
+    private long                 clockCount         = 0;
+    private Logger               logger;
+    
     /**
-     * Create a clock with no logging
+     * Create a clock with a null logger
      */
     public Clock() {
-        this.clockables = new Clockable[100];
-        this.clockableCount = 0;
+        setMeta(new NullLogger());
     }
-
+    
     /**
-     * Create a clock with logging
-     * @param logger the object to use for logging, if null then no logging
+     * Create a clock with a specified logger.
+     * 
+     * @param logger logger to use.  If null, a NullLogger will be created and used
      */
     public Clock(Logger logger) {
-        this.logger = logger;
-        this.clockables = new Clockable[100];
-        this.clockableCount = 0;
+        setMeta(logger);
     }
-
+    
+    // Info that all constructors use
+    private void setMeta(Logger aLogger) {
+        clockableObjects = new ArrayList<>();
+        logger = aLogger;
+    }
+    
     /**
-     * Add clockable object to the ordered collection of objects that will be
-     * when run is called
-     * @param object
+     * Add a clockable object to the list of items to be clocked
+     * @param item clockable object
      */
-    public void add(Clockable object) {
-        clockableCount++;
-        this.clockables[clockableCount - 1] = object;
+    public void add(Clockable item) {
+        if (item != null) {
+            clockableObjects.add(item);
+        }
     }
-
+    
     /**
-     * Issue clock signals (a preClock followed by a clock) to each registered
-     * clockable object signifying 1 second has passed. First, signal preClock
-     * to all registered objects in the order registered and then signal Clock
-     * to all registered objects in the same order
+     * preClock then clock all items
      */
     public void run() {
-        for (int i = 0; i < clockableCount; i++) {
-            clockables[i].preClock();
+           
+        clockCount++;
+        logger.log(Logger.TIMESTAMP, "--- Clocking to " + clockCount + " seconds.");
+        // preClock
+        for (Clockable object : clockableObjects) {
+            logger.log(Logger.INFO, "Preclocking " + object);
+            object.preClock();
         }
-
-        for (int i = 0; i < clockableCount; i++) {
-            clockables[i].clock();
+        
+        // Clock
+        for (Clockable object : clockableObjects) {
+            logger.log(Logger.INFO, "Clocking " + object);
+            object.clock();
         }
     }
-
+    
     /**
-     * Issue n seconds worth of signals based on run()
-     * @param n number of seconds to signal
+     * Run n times
+     * @param n number of times to preClock then clock
      */
     public void run(int n) {
-        for (int i1 = 0; i1 < n; i1++) {
-
-            for (int i2 = 0; i2 < clockableCount; i2++) {
-                this.clockables[i2].preClock();
-            }
-
-            for (int i2 = 0; i2 < clockableCount; i2++) {
-                this.clockables[i2].clock();
-            }
+        for (int i = 0; i < n; i++) {
+            run();
         }
-
     }
-
 }

@@ -12,16 +12,11 @@
  */
 public class PrintLogger extends Logger {
 
-    private int printThreshold;
-
-    public Logger sLogger;
-
     /**
-     *
+     * Create a PrintLogger object at DEBUG level
      */
     public PrintLogger() {
-        printThreshold = 0;
-        sLogger = new StringLogger(0);
+        this.threshold = DEBUG;
     }
 
     /**
@@ -30,8 +25,7 @@ public class PrintLogger extends Logger {
      * occur
      */
     public PrintLogger(int threshold) {
-        printThreshold = threshold;
-        sLogger = new StringLogger(printThreshold);
+        this.threshold = threshold;
     }
 
     /**
@@ -43,10 +37,8 @@ public class PrintLogger extends Logger {
      */
     @Override
     public void log(int level, String logEntry) {
-        if (level <= this.printThreshold) {
+        if (level >= threshold) {
             System.out.println(logEntry);
-        } else {
-            //nothing yet
         }
     }
 }

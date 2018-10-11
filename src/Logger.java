@@ -12,12 +12,20 @@
  */
 public abstract class Logger {
 
-    public int DEBUG = 0;
-    public int INFO = 10;
-    public int TIMESTAMP = 20;
-    public int WARNING = 50;
-    public int ERROR = 100;
-    public int ALWAYS = 100000;
+    public static final int DEBUG = 0;
+    public static final int INFO = 10;
+    public static final int TIMESTAMP = 20;
+    public static final int WARNING = 50;
+    public static final int ERROR = 100;
+    public static final int ALWAYS = 100000;
+    protected int threshold;
+    
+    /**
+     * Default Constructor
+     */
+    public Logger(){
+        
+    }
 
     /**
      * Set a new log threshold for actual logging
@@ -25,6 +33,7 @@ public abstract class Logger {
      * when the logger is asked to do something
      */
     public void setLogThreshold(int newThreshold) {
+        threshold = newThreshold;
 
     }
 

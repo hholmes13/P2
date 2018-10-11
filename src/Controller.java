@@ -14,75 +14,94 @@
  */
 public class Controller implements Clockable {
 
-    //Variables used in this class
-    private Heater heater;
-    private TempSensor ts;
-    private Logger logger;
+   private TempSensor   tempSensor;         // input to controller
+    private Heater       heater;             // heat output of controller
+    private boolean      presentHeatState;   // present command to heater
+    
+    // Configuration 
+    private final double LOW_HEAT_TEMP     = 68.0;
+    private final double HIGH_HEAT_TEMP    = 71.0;
 
-    private int secondCount;
+    private Logger       logger;             // logger 
+    
+    // Constructors
 
     /**
-     * Controller constructor
+     * Create a controller
      * @param logger
      */
     public Controller(Logger logger) {
-        this.logger = logger;
-        secondCount = 0;
+        this.logger = (logger != null) ? logger : new NullLogger();
+        presentHeatState = false;
     }
+    
+    // Queries
 
     /**
-     * Provide the string “Controller with TS:{UID} = {temperature} and
-     * Heater:{UID} = {state}”
+     * Provide the string “Controller with TS:{UID} = {temperature} and Heater:{UID} = {state}”
+     * example: <code>Contoller with TS:10000 = 75.0 and Heater:20000 = ON</code>
+     * Use "no xyz" if there is no corresponding object
      * @return formatted string
      */
     @Override
     public String toString() {
-        return ("Controller with TS:" + ts.getUID() + " = " + this.ts.tsTemp + " and Heater:" + heater.getUID() + " = " + this.heater.status);
+        String tempSensorString = (tempSensor == null ) ? "no temperature sensor"
+                                                        : tempSensor.toString();
+        String heaterString     = (heater == null )     ? "no heater"
+                                                        : heater.toString();
+        
+        return "Controller with " + tempSensorString + " and " + heaterString;
     }
 
+    // Commands
+
     /**
-     * connects a temp sensor only one temp sensor at a time overrides with
-     * newest sensor
-     * @param ts
+     * Connect the temperature sensor to the controller.  
+     * Only one connection at a time is possible.  The method will
+     * silently overwrite on multiple requests.
+     *     
+     * @param  ts temperature sensor
      */
     public void connect(TempSensor ts) {
-        this.ts = ts;
-        this.logger.log(10, "\nController Connected to " + ts.toString());
+        tempSensor = ts;
+        logger.log(Logger.INFO, "Connect Temperature Sensor " + ts);
     }
 
     /**
-     * connects a heater only one heater at a time overrides with most most
-     * recent connect request
-     * @param heater
+     * Connect the heater to the controller.  
+     * Only one connection at a time is possible.  The method will
+     * silently overwrite on multiple requests.
+     *     
+     * @param  heater heater to connect
      */
     public void connect(Heater heater) {
         this.heater = heater;
         this.heater.setState(false);
-        this.logger.log(10, "Controller Connected to " + heater.toString());
+        logger.log(Logger.INFO, "Connect Heater " + heater);
     }
 
     /**
-     * Actions before the clock None in first version (P1)
+     * Do actions before clock (none needed yet)
      */
     @Override
     public void preClock() {
-        this.secondCount++;
-        this.logger.log(20, "\n" + secondCount + " Sec.");
+        
     }
-
+    
     /**
-     * Check current sensor temp and decide to turn on, turn off, or do nothing
-     * turn on when below 68.0 turn off when above 71.0 maintain state otherwise
+     * Do one pass of the controller (read the temperature, determine 
+     * whether to turn heater on or off, and then do it)
      */
     @Override
     public void clock() {
-        if ((this.ts.getTemp() < 68.0) && (this.heater.getState() == false)) {
-            this.heater.setState(true);
-        } else if ((this.ts.getTemp() > 71.0) && (this.heater.getState() == true)) {
-            this.heater.setState(false);
-        } else {
-            //do nothing
-        }
+        double temp = tempSensor.getTemp();
+        
+        boolean s = (temp < LOW_HEAT_TEMP) ||
+                    ( presentHeatState && !(temp > HIGH_HEAT_TEMP) );
+        
+        heater.setState(s);
+        presentHeatState = s;
+        logger.log(Logger.INFO, "Temperature is " + temp + ", set heater to " + s);
     }
 
 }
